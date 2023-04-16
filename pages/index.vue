@@ -1,8 +1,15 @@
 <template>
   <div>
     <navbar name="Home" :num="index" />
-    <tutorial :date="data" />
+    <tutorial :date="data" @dataHere="dataget" />
     <div>{{ ahmed }}</div>
+    <div>
+      <div>
+        <ul v-for="(item , index) in array" :key="index">
+          <li>{{ index }} {{ item.name }} {{ item.age }}</li>
+        </ul>
+      </div>
+    </div>
     <the-footer :title="title" />
   </div>
 </template>
@@ -32,6 +39,12 @@ export default {
           age:'15'
         }
       ]
+    }
+  },
+  methods: {
+    dataget(data){
+      console.log(data)
+      this.array = data
     }
   },
 
